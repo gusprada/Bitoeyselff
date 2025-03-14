@@ -6,67 +6,57 @@
     <title>ตรวจผลรางวัลสลากกินแบ่งรัฐบาล</title>
     <link rel="stylesheet" href="style.css">
     <link rel="icon" href="favicon.ico">
-    <!-- Bootstrap 5 for responsive design -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEJt4RQeP8LJfTt0EwY5lLMa5pQ4l2r0lfv8aDJ1kZgETp4e5EZhJtpzF92Dx" crossorigin="anonymous">
-    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;600&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 <body>
-    <div class="container my-5">
-        <h1 class="text-center mb-4">ตรวจผลรางวัลสลากกินแบ่งรัฐบาล</h1>
-
+    <div class="container">
+        <h1 class="title">ตรวจผลรางวัลสลากกินแบ่งรัฐบาล</h1>
+        
         <form id="lottery-form" class="form-container">
-            <div class="mb-3">
-                <label for="year" class="form-label">ปี:</label>
-                <select id="year" class="form-select">
+            <div class="form-group">
+                <label for="year" class="label">ปี:</label>
+                <select id="year" class="select">
                     <option value="2568">2568</option>
                     <option value="2569">2569</option>
                     <option value="2570">2570</option>
                 </select>
             </div>
 
-            <div class="mb-3">
-                <label for="drawDate" class="form-label">งวดประจำวันที่:</label>
-                <select id="drawDate" class="form-select">
+            <div class="form-group">
+                <label for="drawDate" class="label">งวดประจำวันที่:</label>
+                <select id="drawDate" class="select">
                     <option value="1 มีนาคม 2568">1 มีนาคม 2568</option>
                     <option value="16 มีนาคม 2568">16 มีนาคม 2568</option>
                     <option value="1 เมษายน 2568">1 เมษายน 2568</option>
                 </select>
             </div>
 
-            <div class="mb-3">
-                <label for="lotto" class="form-label">เลขสลาก (6 หลัก):</label>
-                <input type="text" id="lotto" class="form-control" maxlength="6" placeholder="กรอกเลขสลาก 6 หลัก" required>
+            <div class="form-group">
+                <label for="lotto" class="label">เลขสลาก (6 หลัก):</label>
+                <input type="text" id="lotto" class="input" maxlength="6" placeholder="กรอกเลขสลาก 6 หลัก" required>
             </div>
 
-            <div class="d-grid gap-2">
-                <button type="button" class="btn btn-primary animated-button" onclick="checkResults()">ตรวจผลรางวัล</button>
-                <button type="button" class="btn btn-light" onclick="resetForm()">รีเซ็ต</button>
+            <div class="form-actions">
+                <button type="button" class="btn btn-primary" onclick="checkResults()">ตรวจผลรางวัล</button>
+                <button type="button" class="btn btn-secondary" onclick="resetForm()">รีเซ็ต</button>
             </div>
         </form>
     </div>
 
-    <!-- Popup Result -->
-    <div class="modal fade" id="resultModal" tabindex="-1" aria-labelledby="resultModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="resultModalLabel">ผลการตรวจรางวัล</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body" id="resultMessage">
-                    <!-- Result message will be injected here -->
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">ปิด</button>
-                </div>
+    <!-- Modal for results -->
+    <div id="resultModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 id="modalTitle">ผลการตรวจรางวัล</h5>
+                <span class="close" onclick="closeModal()">&times;</span>
+            </div>
+            <div id="resultMessage" class="modal-body">
+                <!-- Result message goes here -->
             </div>
         </div>
     </div>
 
-    <!-- Bootstrap JS and dependencies -->
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz4fnFO9gyb6E2JpOXVrA7Aq3N3iTcj9REX1g7p8L1PeXWk0z8lSgOLyZl" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js" integrity="sha384-pzjw8f+ua7Kw1TIq0tmRfD8pDTmwd1qM5arFpsvXfwI+0VgfvjGE7zKnbsO9PbzT" crossorigin="anonymous"></script>
     <script src="script.js"></script>
 </body>
 </html>
