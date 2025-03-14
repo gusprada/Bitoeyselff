@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ความอยากได้อยากมี | Human Desire</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+        h1, h2 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+        input, button {
+            font-size: 18px;
+            padding: 10px;
+            margin: 10px;
+            border: none;
+            border-bottom: 2px solid black;
+            background: none;
+            outline: none;
+            text-align: center;
+        }
+        button {
+            cursor: pointer;
+            border-bottom: none;
+            background: black;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+        }
+        .result {
+            margin-top: 20px;
+            font-size: 20px;
+            font-weight: bold;
+            color: red;
+        }
+        .language-switch {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            cursor: pointer;
+            font-size: 14px;
+            background: none;
+            border: none;
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+    <button class="language-switch" onclick="toggleLanguage()">EN</button>
+
+    <h1 id="title">คุณอยากได้อะไร?</h1>
+    <input type="text" id="wish" placeholder="พิมพ์สิ่งที่คุณอยากได้..." maxlength="50">
+    
+    <h2 id="numberPrompt">เลือกเลข 6 หลัก</h2>
+    <input type="number" id="lotto" placeholder="123456" maxlength="6">
+    <br>
+    <button onclick="checkLotto()" id="checkButton">ตรวจสอบ</button>
+
+    <div class="result" id="result"></div>
+
+    <script>
+        let language = "th"; // ค่าเริ่มต้นเป็นภาษาไทย
+
+        function toggleLanguage() {
+            language = (language === "th") ? "en" : "th";
+            document.querySelector(".language-switch").textContent = (language === "th") ? "EN" : "TH";
+
+            document.getElementById("title").textContent = (language === "th") ? "คุณอยากได้อะไร?" : "What do you desire?";
+            document.getElementById("wish").placeholder = (language === "th") ? "พิมพ์สิ่งที่คุณอยากได้..." : "Type what you want...";
+            document.getElementById("numberPrompt").textContent = (language === "th") ? "เลือกเลข 6 หลัก" : "Choose a 6-digit number";
+            document.getElementById("lotto").placeholder = "123456";
+            document.getElementById("checkButton").textContent = (language === "th") ? "ตรวจสอบ" : "Check";
+            document.getElementById("result").textContent = ""; // เคลียร์ข้อความผลลัพธ์
+        }
+
+        function checkLotto() {
+            let wish = document.getElementById("wish").value.trim();
+            let userNumber = document.getElementById("lotto").value;
+            let randomNumber = Math.floor(100000 + Math.random() * 900000);
+            let resultText = "";
+
+            if (!wish) {
+                resultText = (language === "th") ? "คุณต้องบอกก่อนว่าอยากได้อะไร" : "You need to tell us what you desire.";
+            } else if (userNumber.length !== 6) {
+                resultText = (language === "th") ? "กรุณากรอกเลข 6 หลักให้ครบ" : "Please enter a full 6-digit number.";
+            } else if (parseInt(userNumber) === randomNumber) {
+                resultText = (language === "th") 
+                    ? `ยินดีด้วย! คุณได้ "${wish}" แล้ว! 🎉` 
+                    : `Congratulations! You got "${wish}" 🎉`;
+            } else {
+                resultText = (language === "th") 
+                    ? `น่าเสียดาย... พลาดไปนิดเดียว เลขที่ออกคือ ${randomNumber} 😢<br>ลองอีกครั้งสิ โอกาสหน้าอาจเป็นของคุณ` 
+                    : `So close... The winning number was ${randomNumber} 😢<br>Try again, maybe next time it's yours.`;
+            }
+
+            document.getElementById("result").innerHTML = resultText;
+        }
+    </script>
+
+</body>
+</html>
