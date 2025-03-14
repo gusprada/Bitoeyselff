@@ -1,115 +1,155 @@
+/* Base reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body & Container */
 body {
     font-family: 'Kanit', sans-serif;
-    background: linear-gradient(45deg, rgba(255, 255, 255, 0.8), rgba(240, 240, 240, 0.9));
+    background: #f0f0f0;
     color: #333;
-    height: 100vh;
-    margin: 0;
     display: flex;
     justify-content: center;
     align-items: center;
+    height: 100vh;
+    flex-direction: column;
 }
 
+/* Main container */
 .container {
+    background: rgba(255, 255, 255, 0.9); /* Transparent white background */
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    width: 90%;
     max-width: 600px;
-    width: 100%;
-    padding: 20px;
-    background: rgba(255, 255, 255, 0.85);
-    border-radius: 20px;
-    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
-    animation: fadeIn 1s ease-in-out;
 }
 
-h1 {
-    font-weight: 600;
-    color: #4CAF50;
-    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+/* Title */
+.title {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+/* Form elements */
+.form-group {
     margin-bottom: 20px;
 }
 
-.form-label {
-    font-weight: 500;
-    color: #333;
+.label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: #555;
 }
 
-.form-select,
-.form-control {
-    border: 2px solid rgba(0, 0, 0, 0.1);
-    border-radius: 10px;
-    background: rgba(0, 0, 0, 0.05);
-    padding: 12px;
-    font-size: 16px;
+.select,
+.input {
+    width: 100%;
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background: #f9f9f9;
     transition: all 0.3s ease;
 }
 
-.form-select:focus,
-.form-control:focus {
-    border-color: #4CAF50;
-    box-shadow: 0 0 8px rgba(76, 175, 80, 0.5);
+.select:focus,
+.input:focus {
+    outline: none;
+    border-color: #0056b3;
+    background: #fff;
 }
 
-.animated-button {
-    background: linear-gradient(45deg, #4CAF50, #81C784);
-    color: white;
-    border-radius: 50px;
-    font-size: 18px;
-    padding: 15px 30px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease;
+/* Button styles */
+.btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
-.animated-button:hover {
-    transform: scale(1.05);
-    background: linear-gradient(45deg, #66BB6A, #4CAF50);
+.btn-primary {
+    background-color: #007bff;
+    color: #fff;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+}
+
+.btn-secondary {
+    background-color: #6c757d;
+    color: #fff;
+}
+
+.btn-secondary:hover {
+    background-color: #5a6268;
+}
+
+/* Modal */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background: rgba(0, 0, 0, 0.4);
+}
+
+.modal-content {
+    background-color: #fff;
+    margin: 15% auto;
+    padding: 20px;
+    border-radius: 10px;
+    width: 80%;
+    max-width: 500px;
+    animation: modal-animation 0.3s ease-out;
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.modal-header h5 {
+    margin: 0;
+}
+
+.close {
+    font-size: 1.5rem;
     cursor: pointer;
 }
 
-.btn-light {
-    background-color: #f1f1f1;
-    color: #333;
-    border-radius: 50px;
-    padding: 12px 25px;
-}
-
-.modal-body {
-    font-size: 18px;
-    color: #333;
-    animation: slideIn 0.5s ease-out;
-}
-
-@keyframes fadeIn {
-    0% {
+@keyframes modal-animation {
+    from {
         opacity: 0;
-        transform: translateY(50px);
+        transform: scale(0.8);
     }
-    100% {
+    to {
         opacity: 1;
-        transform: translateY(0);
+        transform: scale(1);
     }
 }
 
-@keyframes slideIn {
-    0% {
-        opacity: 0;
-        transform: translateX(-50px);
-    }
-    100% {
-        opacity: 1;
-        transform: translateX(0);
-    }
-}
-
-@media (max-width: 768px) {
+/* For Mobile responsiveness */
+@media screen and (max-width: 600px) {
     .container {
+        width: 90%;
         padding: 15px;
     }
 
-    .form-select,
-    .form-control {
-        font-size: 14px;
-    }
-
-    .animated-button {
-        font-size: 16px;
-        padding: 12px 25px;
+    .title {
+        font-size: 1.6rem;
     }
 }
