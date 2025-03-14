@@ -1,25 +1,33 @@
+// Function to check results
 function checkResults() {
-    const lotto = document.getElementById("lotto").value.trim();
-    const resultMessage = document.getElementById("resultMessage");
-    const resultModal = new bootstrap.Modal(document.getElementById('resultModal'));
-    
-    if (lotto.length !== 6) {
-        resultMessage.innerHTML = "กรุณากรอกเลขสลาก 6 หลัก";
-        resultModal.show();
+    const lottoNumber = document.getElementById('lotto').value;
+    if (lottoNumber.length !== 6) {
+        Swal.fire('กรุณากรอกเลข 6 หลัก');
         return;
     }
 
-    const winningNumber = Math.floor(100000 + Math.random() * 900000); // Random winning number
-    if (lotto === winningNumber.toString()) {
-        resultMessage.innerHTML = `ยินดีด้วย! เลขที่คุณกรอกตรงกับรางวัล 🎉<br>เลขที่ออก: ${winningNumber}`;
-    } else {
-        resultMessage.innerHTML = `น่าเสียดาย... เลขที่คุณกรอกไม่ตรงกับรางวัล 😢<br>เลขที่ออก: ${winningNumber}`;
-    }
+    const winningNumber = '123456'; // Example
+    const resultMessage = (lottoNumber === winningNumber)
+        ? 'ยินดีด้วย! คุณถูกรางวัล 🎉'
+        : `น่าเสียดาย... เลขที่ออกคือ ${winningNumber}`;
 
-    resultModal.show();
+    document.getElementById('resultMessage').innerHTML = resultMessage;
+    showModal();
 }
 
+// Function to reset form
 function resetForm() {
-    document.getElementById("lotto").value = '';
-    document.getElementById("resultMessage").innerHTML = '';
+    document.getElementById('lotto').value = '';
+    document.getElementById('year').value = '2568';
+    document.getElementById('drawDate').value = '1 มีนาคม 2568';
+}
+
+// Function to show the modal
+function showModal() {
+    document.getElementById('resultModal').style.display = 'block';
+}
+
+// Function to close the modal
+function closeModal() {
+    document.getElementById('resultModal').style.display = 'none';
 }
