@@ -15,7 +15,7 @@
     <div class="container my-5">
         <h1 class="text-center mb-4">ตรวจผลรางวัลสลากกินแบ่งรัฐบาล</h1>
 
-        <form id="lottery-form" class="p-4 rounded shadow-sm bg-light">
+        <form id="lottery-form" class="form-container">
             <div class="mb-3">
                 <label for="year" class="form-label">ปี:</label>
                 <select id="year" class="form-select">
@@ -40,8 +40,8 @@
             </div>
 
             <div class="d-grid gap-2">
-                <button type="button" class="btn btn-success" onclick="checkResults()">ตรวจผลรางวัล</button>
-                <button type="button" class="btn btn-secondary" onclick="resetForm()">รีเซ็ต</button>
+                <button type="button" class="btn btn-primary animated-button" onclick="checkResults()">ตรวจผลรางวัล</button>
+                <button type="button" class="btn btn-light" onclick="resetForm()">รีเซ็ต</button>
             </div>
         </form>
     </div>
