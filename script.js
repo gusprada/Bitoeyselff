@@ -2,7 +2,12 @@
 function checkResults() {
     const lottoNumber = document.getElementById('lotto').value;
     if (lottoNumber.length !== 6) {
-        Swal.fire('กรุณากรอกเลข 6 หลัก');
+        Swal.fire({
+            icon: 'error',
+            title: 'กรุณากรอกเลข 6 หลัก',
+            text: 'กรุณากรอกเลขสลาก 6 หลักที่ถูกต้อง',
+            confirmButtonText: 'ลองใหม่'
+        });
         return;
     }
 
