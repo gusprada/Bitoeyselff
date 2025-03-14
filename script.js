@@ -1,38 +1,38 @@
-// Function to check results
-function checkResults() {
-    const lottoNumber = document.getElementById('lotto').value;
-    if (lottoNumber.length !== 6) {
-        Swal.fire({
-            icon: 'error',
-            title: 'กรุณากรอกเลข 6 หลัก',
-            text: 'กรุณากรอกเลขสลาก 6 หลักที่ถูกต้อง',
-            confirmButtonText: 'ลองใหม่'
-        });
-        return;
-    }
+let currentLang = "th";
 
-    const winningNumber = '123456'; // Example
-    const resultMessage = (lottoNumber === winningNumber)
-        ? 'ยินดีด้วย! คุณถูกรางวัล 🎉'
-        : `น่าเสียดาย... เลขที่ออกคือ ${winningNumber}`;
-
-    document.getElementById('resultMessage').innerHTML = resultMessage;
-    showModal();
+function switchLanguage() {
+    currentLang = currentLang === "th" ? "en" : "th";
+    updateText();
 }
 
-// Function to reset form
-function resetForm() {
-    document.getElementById('lotto').value = '';
-    document.getElementById('year').value = '2568';
-    document.getElementById('drawDate').value = '1 มีนาคม 2568';
+function updateText() {
+    const text = {
+        th: {
+            question: "อยากได้อะไรถ้าถูกหวย?",
+            enterNumber: "กรอกตัวเลข 6 หลัก",
+            button: "ตรวจสอบผลรางวัล",
+            resultLose: "น่าเสียดาย... เลขที่คุณกรอกไม่ตรงกับรางวัล ลองใหม่อีกครั้งไหม? โอกาสหน้าอาจเป็นของคุณ"
+        },
+        en: {
+            question: "What do you want if you win the lottery?",
+            enterNumber: "Enter your 6-digit number",
+            button: "Check Results",
+            resultLose: "Too bad... Your number didn't match. Want to try again? Maybe next time luck will be on your side!"
+        }
+    };
+
+    document.getElementById("question").innerText = text[currentLang].question;
+    document.getElementById("lotteryInput").placeholder = text[currentLang].enterNumber;
+    document.getElementById("checkButton").innerText = text[currentLang].button;
 }
 
-// Function to show the modal
-function showModal() {
-    document.getElementById('resultModal').style.display = 'block';
+function checkLucky() {
+    const result = document.getElementById("result");
+    result.innerText = currentLang === "th"
+        ? "น่าเสียดาย... เลขที่คุณกรอกไม่ตรงกับรางวัล ลองใหม่อีกครั้งไหม? โอกาสหน้าอาจเป็นของคุณ"
+        : "Too bad... Your number didn't match. Want to try again? Maybe next time luck will be on your side!";
+    
+    result.classList.remove("hidden");
 }
 
-// Function to close the modal
-function closeModal() {
-    document.getElementById('resultModal').style.display = 'none';
-}
+updateText();
