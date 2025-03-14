@@ -1,133 +1,45 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
 body {
-    font-family: 'Arial', sans-serif;
-    background: #f7f7f7;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    overflow: hidden;
+    font-family: 'Kanit', sans-serif;
+    background-color: #f4f7fa;
+    color: #333;
 }
 
 .container {
-    background: #fff;
-    border-radius: 10px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-    padding: 30px;
-    text-align: center;
-    width: 400px;
+    max-width: 600px;
+    margin: 0 auto;
 }
 
 h1 {
-    font-size: 28px;
-    color: #333;
-    margin-bottom: 20px;
+    font-weight: 600;
+    color: #1c1e24;
 }
 
-.form-group {
-    margin-bottom: 15px;
-    text-align: left;
-}
-
-label {
-    font-size: 18px;
-    color: #333;
-}
-
-select, input {
-    width: 100%;
-    padding: 12px;
-    font-size: 16px;
-    margin-top: 5px;
-    border: 2px solid #ccc;
-    border-radius: 5px;
-    background-color: #f9f9f9;
-}
-
-select:focus, input:focus {
-    border-color: #4CAF50;
-    outline: none;
-}
-
-.buttons {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 20px;
-}
-
-button {
-    background-color: #4CAF50;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    font-size: 18px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-button:hover {
-    background-color: #45a049;
-}
-
-button:disabled {
-    background-color: #ccc;
-    cursor: not-allowed;
-}
-
-.result-container {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    display: none;
-    justify-content: center;
-    align-items: center;
-    background: rgba(0, 0, 0, 0.5);
-}
-
-.result-popup {
-    background: #fff;
+form {
+    background-color: #ffffff;
     border-radius: 10px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
     padding: 20px;
-    width: 300px;
-    text-align: center;
-    opacity: 0;
-    transform: scale(0.7);
-    animation: pop-up 0.4s forwards;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-@keyframes pop-up {
-    to {
-        opacity: 1;
-        transform: scale(1);
-    }
+.form-label {
+    font-weight: 500;
 }
 
-.result-message {
-    font-size: 20px;
-    font-weight: bold;
+.modal-body {
+    font-size: 18px;
     color: #333;
-    margin-bottom: 20px;
 }
 
-.close-btn {
-    background-color: #f44336;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
+.modal-footer .btn {
     font-size: 16px;
-    cursor: pointer;
 }
 
-.close-btn:hover {
-    background-color: #e53935;
+@media (max-width: 768px) {
+    .container {
+        padding: 15px;
+    }
+
+    form {
+        padding: 15px;
+    }
 }
